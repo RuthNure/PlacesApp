@@ -97,7 +97,7 @@ class PlaceTableViewController: UITableViewController {
             if let cell = sender as? UITableViewCell,
                let row = tableView.indexPath(for: cell)?.row,
                let selectedPlace = places[row] as? Place {
-                controller.currentLocation = selectedPlace
+                    controller.currentPlace = selectedPlace
                 print("Segue to EditLocation — Sending Location: \(selectedPlace.name ?? "nil")")
             }
         }
