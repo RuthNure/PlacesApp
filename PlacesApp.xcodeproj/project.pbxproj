@@ -290,9 +290,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BUS7835KX;
+				DEVELOPMENT_TEAM = GZ4M8SCS83;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This feature needs access to camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This feature needs access to current location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This feature needs access to photos ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -304,7 +307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = placeapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruthnure.placeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -319,9 +322,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BUS7835KX;
+				DEVELOPMENT_TEAM = GZ4M8SCS83;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This feature needs access to camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This feature needs access to current location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This feature needs access to photos ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -333,7 +339,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = placeapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruthnure.placeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

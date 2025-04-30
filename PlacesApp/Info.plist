@@ -3,11 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This feature needs access to current location </string>
-	<key>NSCameraUsageDescription</key>
-	<string>This feature needs access to camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This feature needs access to photos </string>
+	<string>location</string>
 	<key>Storyboard Name</key>
 	<string>Main</string>
 	<key>UIApplicationSceneManifest</key>

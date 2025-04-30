@@ -49,4 +49,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
          */
         
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+           if let location = locations.first {
+               let coordinate = location.coordinate
+               addPlacemarkToMap(coordinate: coordinate)
+               locationManager.stopUpdatingLocation() // Stop for battery efficiency
+           }
+       }
+    
+    func addPlacemarkToMap(coordinate: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "Saved Place"
+        mapView.addAnnotation(annotation)
+
+        // Optional: center map
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.setRegion(region, animated: true)
+    }
+
 }
