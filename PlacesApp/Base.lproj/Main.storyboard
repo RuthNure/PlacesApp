@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -171,14 +172,43 @@
                     <view key="view" contentMode="scaleToFill" id="fui-CO-CnO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ukd-Ah-beg">
+                                <rect key="frame" x="0.0" y="75" width="393" height="694"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="393" id="phn-x6-jew"/>
+                                    <constraint firstAttribute="height" constant="694" id="wvn-wX-FYs"/>
+                                </constraints>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uvd-c5-c2c">
+                                <rect key="frame" x="121" y="712" width="151" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Standard"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4yV-Wa-j4G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ukd-Ah-beg" firstAttribute="leading" secondItem="4yV-Wa-j4G" secondAttribute="leading" id="4WH-7T-zJG"/>
+                            <constraint firstItem="uvd-c5-c2c" firstAttribute="centerX" secondItem="fui-CO-CnO" secondAttribute="centerX" id="AJ5-U9-IbW"/>
+                            <constraint firstItem="4yV-Wa-j4G" firstAttribute="bottom" secondItem="Ukd-Ah-beg" secondAttribute="bottom" id="CAb-rC-tvG"/>
+                            <constraint firstItem="4yV-Wa-j4G" firstAttribute="trailing" secondItem="Ukd-Ah-beg" secondAttribute="trailing" id="LXR-Bp-71I"/>
+                            <constraint firstItem="uvd-c5-c2c" firstAttribute="centerY" secondItem="fui-CO-CnO" secondAttribute="centerY" constant="301.5" id="qQt-dc-eNs"/>
+                            <constraint firstItem="4yV-Wa-j4G" firstAttribute="bottom" secondItem="Ukd-Ah-beg" secondAttribute="bottom" id="taC-N0-LxB"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="maps" image="mappin" catalog="system" selectedImage="mappin" id="rJq-zU-OIJ"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ukd-Ah-beg" id="epf-ej-oAj"/>
+                        <outlet property="segmentButton" destination="uvd-c5-c2c" id="rsW-Be-WhD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCu-hn-RQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896" y="515"/>
+            <point key="canvasLocation" x="1895.4198473282443" y="514.78873239436621"/>
         </scene>
         <!--Places-->
         <scene sceneID="z8E-7J-wYO">

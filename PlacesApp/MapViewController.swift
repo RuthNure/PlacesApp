@@ -6,13 +6,24 @@
 //
 
 import UIKit
+import MapKit
+import CoreData
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var segmentButton: UISegmentedControl!
+    var locationManager = CLLocationManager()
+    var place: [Place] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization( )
+        mapView.delegate = self
     }
     
 
