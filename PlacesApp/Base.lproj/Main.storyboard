@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLv-R4-Ajg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="-128"/>
+            <point key="canvasLocation" x="2818" y="-135"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6zZ-w2-s2H">
@@ -156,7 +156,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="5lV-4e-2FN" kind="relationship" relationship="viewControllers" id="1RU-Pq-ek3"/>
                         <segue destination="xuk-gj-0Bf" kind="relationship" relationship="viewControllers" id="Z2g-2X-bHU"/>
                         <segue destination="o11-1y-H0b" kind="relationship" relationship="viewControllers" id="Eir-xK-KBz"/>
                     </connections>
@@ -187,6 +186,9 @@
                                     <segment title="First"/>
                                     <segment title="Standard"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sgmtMapType:" destination="xuk-gj-0Bf" eventType="valueChanged" id="p4d-Ah-Cs8"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4yV-Wa-j4G"/>
@@ -208,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCu-hn-RQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.4198473282443" y="514.78873239436621"/>
+            <point key="canvasLocation" x="1213" y="546"/>
         </scene>
         <!--Places-->
         <scene sceneID="z8E-7J-wYO">

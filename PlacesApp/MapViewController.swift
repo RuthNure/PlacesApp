@@ -10,7 +10,7 @@ import MapKit
 import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var segmentButton: UISegmentedControl!
@@ -26,15 +26,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func sgmtMapType(_ sender: Any) {
+        switch segmentButton.selectedSegmentIndex{
+        case 0:
+            mapView.mapType = .standard
+            break
+        case 1:
+            mapView.mapType = .satellite
+            break
+        default :
+            break
+        }
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
+        
     }
-    */
-
 }
