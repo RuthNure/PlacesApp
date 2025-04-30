@@ -9,7 +9,13 @@ import UIKit
 import CoreLocation
 import CoreData
 
-class PlaceViewController: UIViewController {
+
+class PlaceViewController: UIViewController, CLLocationManagerDelegate {
+    
+    lazy var geoCoder = CLGeocoder()
+    var locationManager: CLLocationManager!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var currentLocation: Place?
 
     @IBOutlet weak var nameText: UITextField!
     
@@ -31,19 +37,40 @@ class PlaceViewController: UIViewController {
     @IBAction func changePicture(_ sender: Any) {
     }
     @IBAction func getDeviceCoordinates(_ sender: Any) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+              locationManager.distanceFilter = 100
+              locationManager.startUpdatingLocation()
+              locationManager.startUpdatingHeading()
     }
     
     @IBAction func saveLocation(_ sender: Any) {
+        view.endEditing(true)
+        if currentLocation == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentLocation = Place(context: context)
+        }
+        currentLocation?.name = nameText.text
+        currentLocation?.date = datelbl.text
+        currentLocation?.image = imageView.image?.jpegData(compressionQuality: 0.8)
+        appDelegate.saveContext()
+        segment.selectedSegmentIndex = 0
+        changeEditMode(self)
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
     }
     
-    func locationManger (_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager (_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            print ("Permission Granted")
+        }
+        else {
+            print("Permission NOT Granted")
+        }
         
     }
     
-    func locationManger (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -63,6 +90,9 @@ class PlaceViewController: UIViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
 
         // Do any additional setup after loading the view.
     }
