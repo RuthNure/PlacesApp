@@ -10,17 +10,15 @@ import CoreLocation
 import CoreData
 
 
-class PlaceViewController: UIViewController, CLLocationManagerDelegate {
+class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    lazy var geoCoder = CLGeocoder()
-    var locationManager: CLLocationManager!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var currentLocation: Place?
-
+    
     @IBOutlet weak var nameText: UITextField!
     
-    @IBOutlet weak var savePlace: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+   
+    @IBOutlet weak var savePlace: UIButton!
+    
     
     @IBOutlet weak var pickLocation: UIButton!
     @IBOutlet weak var takePicture: UIButton!
@@ -34,13 +32,38 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var segment: UISegmentedControl!
     
     
-    @IBAction func changePicture(_ sender: Any) {
+    lazy var geoCoder = CLGeocoder()
+    var locationManager: CLLocationManager!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var currentLocation: Place?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        // Do any additional setup after loading the view.
     }
+    
+    
+    
+    @IBAction func changePicture(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+          //  cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func getDeviceCoordinates(_ sender: Any) {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-              locationManager.distanceFilter = 100
-              locationManager.startUpdatingLocation()
-              locationManager.startUpdatingHeading()
+        locationManager.distanceFilter = 100
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
     }
     
     @IBAction func saveLocation(_ sender: Any) {
@@ -58,6 +81,19 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
+        if segment.selectedSegmentIndex == 0 {//View Mode
+            nameText.isUserInteractionEnabled = false
+            nameText.borderStyle = .none
+            savePlace.isHidden = true
+            pickLocation.isHidden = true
+        }
+        else{//Edit Mode
+            nameText.isUserInteractionEnabled = true
+            nameText.borderStyle = .roundedRect
+            savePlace.isHidden = false
+            pickLocation.isHidden = false
+            
+        }
     }
     
     func locationManager (_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -69,43 +105,79 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
-    
     func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let eventDate = location.timestamp
+            let howRecent = eventDate.timeIntervalSinceNow
+            if Double(howRecent) < 15.0 {
+                let lat = location.coordinate.latitude
+                let long = location.coordinate.longitude
+                
+                latitudelbl.text = String(format: "%g\u{00B0}", lat)
+                longitudelbl.text = String(format: "%g\u{00B0}", long)
+                
+                
+                if currentLocation == nil {
+                    let context = appDelegate.persistentContainer.viewContext
+                    currentLocation = Place(context: context)
+                }
+                
+                currentLocation?.latitude = lat
+                currentLocation?.longitude = long
+            }
+        }
+        
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage {
+                imageView.contentMode = .scaleAspectFill
+                imageView.image = image
+                
+                if currentLocation == nil {
+                    let context = appDelegate.persistentContainer.viewContext
+                    currentLocation = Place(context: context)
+                }
+
+                currentLocation?.image = image.jpegData(compressionQuality: 1.0)
+                setDate()
+            }
+
+            picker.dismiss(animated: true)
+        }
+
+           
+        func setDate(){
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
+            datelbl.text = formatter.string(from: Date())
+            dismiss(animated: true, completion: nil)
+        }
+        
+        
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
+        
+        
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
         
     }
     
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

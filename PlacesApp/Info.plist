@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This feature needs access to current location </string>
+	<key>NSCameraUsageDescription</key>
+	<string>This feature needs access to camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This feature needs access to photos </string>
 	<key>Storyboard Name</key>
 	<string>Main</string>
 	<key>UIApplicationSceneManifest</key>

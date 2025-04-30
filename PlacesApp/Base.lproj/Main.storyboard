@@ -121,7 +121,7 @@
                     <tabBarItem key="tabBarItem" title="placeview" image="gear" catalog="system" selectedImage="gear" id="Hwk-0z-Wdi"/>
                     <connections>
                         <outlet property="datelbl" destination="jfv-vz-AiT" id="0kc-Hh-BXC"/>
-                        <outlet property="imageView" destination="7Wg-oO-aGh" id="Uvv-iu-dgz"/>
+                        <outlet property="imageView" destination="7Wg-oO-aGh" id="we2-1r-WCG"/>
                         <outlet property="latitudelbl" destination="Ka7-iy-bov" id="kfj-wi-5Hu"/>
                         <outlet property="longitudelbl" destination="mrJ-Us-7Cb" id="Z8U-Cy-5ih"/>
                         <outlet property="nameText" destination="Yvd-ax-2JM" id="EnE-Pc-p0Z"/>
