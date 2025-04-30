@@ -6,12 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		E00907922DC0806900839A39 /* LocalExplorerDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E00907902DC0806900839A39 /* LocalExplorerDataModel.xcdatamodeld */; };
-		E00907952DC082A600839A39 /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00907932DC082A600839A39 /* Place+CoreDataClass.swift */; };
-		E00907962DC082A600839A39 /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00907942DC082A600839A39 /* Place+CoreDataProperties.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		5CC7C5052DBF2F350049E1F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,9 +27,6 @@
 		5CC7C4EE2DBF2F2B0049E1F1 /* PlacesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC7C5042DBF2F350049E1F1 /* PlacesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlacesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC7C50E2DBF2F350049E1F1 /* PlacesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlacesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E00907912DC0806900839A39 /* LocalExplorerDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalExplorerDataModel.xcdatamodel; sourceTree = "<group>"; };
-		E00907932DC082A600839A39 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E00907942DC082A600839A39 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -43,6 +34,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				ViewController.swift,
 			);
 			target = 5CC7C4ED2DBF2F2B0049E1F1 /* PlacesApp */;
 		};
@@ -97,9 +89,6 @@
 		5CC7C4E52DBF2F2B0049E1F1 = {
 			isa = PBXGroup;
 			children = (
-				E00907932DC082A600839A39 /* Place+CoreDataClass.swift */,
-				E00907942DC082A600839A39 /* Place+CoreDataProperties.swift */,
-				E00907902DC0806900839A39 /* LocalExplorerDataModel.xcdatamodeld */,
 				5CC7C4F02DBF2F2B0049E1F1 /* PlacesApp */,
 				5CC7C5072DBF2F350049E1F1 /* PlacesAppTests */,
 				5CC7C5112DBF2F350049E1F1 /* PlacesAppUITests */,
@@ -261,9 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E00907952DC082A600839A39 /* Place+CoreDataClass.swift in Sources */,
-				E00907962DC082A600839A39 /* Place+CoreDataProperties.swift in Sources */,
-				E00907922DC0806900839A39 /* LocalExplorerDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +290,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GZ4M8SCS83;
+				DEVELOPMENT_TEAM = 5BUS7835KX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -312,12 +298,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.company.1ma.PlacesApp;
+				PRODUCT_BUNDLE_IDENTIFIER = placeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -332,7 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GZ4M8SCS83;
+				DEVELOPMENT_TEAM = 5BUS7835KX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -340,12 +327,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.company.1ma.PlacesApp;
+				PRODUCT_BUNDLE_IDENTIFIER = placeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -584,19 +572,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E00907902DC0806900839A39 /* LocalExplorerDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E00907912DC0806900839A39 /* LocalExplorerDataModel.xcdatamodel */,
-			);
-			currentVersion = E00907912DC0806900839A39 /* LocalExplorerDataModel.xcdatamodel */;
-			path = LocalExplorerDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5CC7C4E62DBF2F2B0049E1F1 /* Project object */;
 }
