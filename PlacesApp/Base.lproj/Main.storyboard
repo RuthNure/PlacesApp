@@ -40,7 +40,7 @@
         <!--placeview-->
         <scene sceneID="wdC-Ty-rJ3">
             <objects>
-                <viewController id="5lV-4e-2FN" customClass="AddPlaceViewController" sceneMemberID="viewController">
+                <viewController id="5lV-4e-2FN" customClass="PlaceViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KBg-dn-T6A">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
                                 <connections>
-                                    <action selector="changePicture:" destination="5lV-4e-2FN" eventType="touchUpInside" id="tHY-9a-0hc"/>
+                                    <action selector="changePicture:" destination="5lV-4e-2FN" eventType="touchUpInside" id="7ih-kn-1cA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5Y-Wt-5CT">
@@ -70,7 +70,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Device Coordinates"/>
                                 <connections>
-                                    <action selector="getDeviceCoordinates:" destination="5lV-4e-2FN" eventType="touchUpInside" id="waw-zl-juq"/>
+                                    <action selector="getDeviceCoordinates:" destination="5lV-4e-2FN" eventType="touchUpInside" id="md1-xj-Rl7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rI-KL-byM">
@@ -79,7 +79,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save Place"/>
                                 <connections>
-                                    <action selector="saveLocation:" destination="5lV-4e-2FN" eventType="touchUpInside" id="FIL-b0-ZyV"/>
+                                    <action selector="saveLocation:" destination="5lV-4e-2FN" eventType="touchUpInside" id="KDC-NA-T3I"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfv-vz-AiT">
@@ -111,7 +111,7 @@
                                     <segment title="edit"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changeEditMode:" destination="5lV-4e-2FN" eventType="valueChanged" id="iLP-NI-CkU"/>
+                                    <action selector="changeEditMode:" destination="5lV-4e-2FN" eventType="valueChanged" id="0eW-in-DsM"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -120,15 +120,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="placeview" image="gear" catalog="system" selectedImage="gear" id="Hwk-0z-Wdi"/>
                     <connections>
-                        <outlet property="datelbl" destination="jfv-vz-AiT" id="8pG-kE-7Yv"/>
-                        <outlet property="imageView" destination="7Wg-oO-aGh" id="FQp-HC-rX1"/>
-                        <outlet property="latitudelbl" destination="Ka7-iy-bov" id="Ijb-A5-0wR"/>
-                        <outlet property="longitudelbl" destination="mrJ-Us-7Cb" id="YVs-2y-3fn"/>
-                        <outlet property="nameText" destination="Yvd-ax-2JM" id="sDK-4z-fFG"/>
-                        <outlet property="pickLocation" destination="B5Y-Wt-5CT" id="VII-Vq-Ub8"/>
-                        <outlet property="savePlace" destination="2rI-KL-byM" id="Y0R-KF-aQj"/>
-                        <outlet property="segment" destination="VMc-4t-PpS" id="muK-rP-Pbe"/>
-                        <outlet property="takePicture" destination="vSs-fO-eRg" id="JXa-0C-jNd"/>
+                        <outlet property="datelbl" destination="jfv-vz-AiT" id="0kc-Hh-BXC"/>
+                        <outlet property="imageView" destination="7Wg-oO-aGh" id="Uvv-iu-dgz"/>
+                        <outlet property="latitudelbl" destination="Ka7-iy-bov" id="kfj-wi-5Hu"/>
+                        <outlet property="longitudelbl" destination="mrJ-Us-7Cb" id="Z8U-Cy-5ih"/>
+                        <outlet property="nameText" destination="Yvd-ax-2JM" id="EnE-Pc-p0Z"/>
+                        <outlet property="pickLocation" destination="B5Y-Wt-5CT" id="ixg-eu-ocI"/>
+                        <outlet property="savePlace" destination="2rI-KL-byM" id="Dtu-z4-SWe"/>
+                        <outlet property="segment" destination="VMc-4t-PpS" id="XsT-GW-jAe"/>
+                        <outlet property="takePicture" destination="vSs-fO-eRg" id="7tW-f4-G7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLv-R4-Ajg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -1,14 +1,15 @@
 //
-//  AddPlaceViewController.swift
+//  PlaceViewController.swift
 //  PlacesApp
 //
 //  Created by Meklit Abera on 4/29/25.
 //
 
 import UIKit
-import PhotosUI
+import CoreLocation
+import CoreData
 
-class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PlaceViewController: UIViewController {
 
     @IBOutlet weak var nameText: UITextField!
     
@@ -49,6 +50,17 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
 
