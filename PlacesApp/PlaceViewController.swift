@@ -76,8 +76,16 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
         currentLocation?.date = datelbl.text
         currentLocation?.image = imageView.image?.jpegData(compressionQuality: 0.8)
         appDelegate.saveContext()
+        self.navigationController?.popViewController(animated: true)
         segment.selectedSegmentIndex = 0
         changeEditMode(self)
+        if currentLocation == nil {
+            print("currentLocation is nil. No contact to save.")
+        } else {
+            print("currentLocation exists. Proceeding to save:")
+            print("Location name: \(currentLocation?.name ?? "nil")")
+        }
+        
     }
     
     @IBAction func changeEditMode(_ sender: Any) {

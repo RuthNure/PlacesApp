@@ -8,22 +8,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Place Table View Controller-->
         <scene sceneID="0ab-vD-ObE">
             <objects>
-                <tableViewController id="Gis-KG-CVj" customClass="PlaceListTableViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Gis-KG-CVj" customClass="PlaceTableViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="WYD-hO-cY7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="muO-bp-Yjc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceCell" id="muO-bp-Yjc">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="muO-bp-Yjc" id="54u-ga-WjW">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="5lV-4e-2FN" kind="showDetail" identifier="EditLocation" trigger="accessoryAction" id="RWf-2j-X8M"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -31,16 +34,22 @@
                             <outlet property="delegate" destination="Gis-KG-CVj" id="0YK-wS-Zbr"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="64Y-fz-bx3"/>
+                    <navigationItem key="navigationItem" id="9Xj-vE-9TY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tff-fV-ZmH">
+                            <connections>
+                                <segue destination="5lV-4e-2FN" kind="show" identifier="AddLocation" id="1eu-vi-RNX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zc-si-Gjy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="-963"/>
+            <point key="canvasLocation" x="2716.7938931297708" y="-963.38028169014092"/>
         </scene>
         <!--placeview-->
         <scene sceneID="wdC-Ty-rJ3">
             <objects>
-                <viewController id="5lV-4e-2FN" customClass="PlaceViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceController" id="5lV-4e-2FN" customClass="PlaceViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KBg-dn-T6A">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +128,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="placeview" image="gear" catalog="system" selectedImage="gear" id="Hwk-0z-Wdi"/>
+                    <navigationItem key="navigationItem" id="K8z-KI-w6Q"/>
                     <connections>
                         <outlet property="datelbl" destination="jfv-vz-AiT" id="0kc-Hh-BXC"/>
                         <outlet property="imageView" destination="7Wg-oO-aGh" id="we2-1r-WCG"/>
@@ -133,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLv-R4-Ajg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823.6641221374045" y="-283.0985915492958"/>
+            <point key="canvasLocation" x="1895" y="-128"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6zZ-w2-s2H">
@@ -147,7 +157,7 @@
                     <connections>
                         <segue destination="5lV-4e-2FN" kind="relationship" relationship="viewControllers" id="1RU-Pq-ek3"/>
                         <segue destination="xuk-gj-0Bf" kind="relationship" relationship="viewControllers" id="Z2g-2X-bHU"/>
-                        <segue destination="Gis-KG-CVj" kind="relationship" relationship="viewControllers" id="Eir-xK-KBz"/>
+                        <segue destination="o11-1y-H0b" kind="relationship" relationship="viewControllers" id="Eir-xK-KBz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9G-LK-vZH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -170,10 +180,33 @@
             </objects>
             <point key="canvasLocation" x="1896" y="515"/>
         </scene>
+        <!--Places-->
+        <scene sceneID="z8E-7J-wYO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o11-1y-H0b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Places" image="pin" catalog="system" selectedImage="pin" id="64Y-fz-bx3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l12-WX-INW">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gis-KG-CVj" kind="relationship" relationship="rootViewController" id="SVV-Z6-w5P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqE-gq-9Ry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1790.0763358778624" y="-963.38028169014092"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1eu-vi-RNX"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
+        <image name="pin" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
