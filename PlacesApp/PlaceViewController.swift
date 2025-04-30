@@ -85,27 +85,27 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
     }
     
     @IBAction func saveLocation(_ sender: Any) {
-        view.endEditing(true)
-        if currentLocation == nil {
-            let context = appDelegate.persistentContainer.viewContext
-            currentLocation = Place(context: context)
-        }
-        currentLocation?.name = nameText.text
-        currentLocation?.date = datelbl.text
-        currentLocation?.image = imageView.image?.jpegData(compressionQuality: 0.8)
-        appDelegate.saveContext()
-        self.navigationController?.popViewController(animated: true)
-        segment.selectedSegmentIndex = 0
-        changeEditMode(self)
-        if currentLocation == nil {
-            print("currentLocation is nil. No contact to save.")
-        } else {
-            print("currentLocation exists. Proceeding to save:")
-            print("Location name: \(currentLocation?.name ?? "nil")")
-        }
-        
-    }
-    
+    view.endEditing(true)
+
+    if currentPlace == nil {
+        let context = appDelegate.persistentContainer.viewContext
+        currentPlace = Place(context: context)
+    }
+
+    currentPlace?.name = nameText.text
+    currentPlace?.date = datelbl.text
+    currentPlace?.image = imageView.image?.jpegData(compressionQuality: 0.8)
+    currentPlace?.latitude = Double(latitudelbl.text ?? "") ?? 0.0
+    currentPlace?.longitude = Double(longitudelbl.text ?? "") ?? 0.0
+
+    appDelegate.saveContext()
+    print("✅ Saved: \(currentPlace?.name ?? "nil"), Date: \(currentPlace?.date ?? "nil")")
+
+    self.navigationController?.popViewController(animated: true)
+    segment.selectedSegmentIndex = 0
+    changeEditMode(self)
+}
+
     @IBAction func changeEditMode(_ sender: Any) {
         if segment.selectedSegmentIndex == 0 {//View Mode
             nameText.isUserInteractionEnabled = false
@@ -155,31 +155,51 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
         
     }
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage {
-                imageView.contentMode = .scaleAspectFill
-                imageView.image = image
-                
-                if currentLocation == nil {
-                    let context = appDelegate.persistentContainer.viewContext
-                    currentLocation = Place(context: context)
-                }
+    if let image = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage {
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = image
 
-                currentLocation?.image = image.jpegData(compressionQuality: 1.0)
-                setDate()
-            }
+        if currentPlace == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentPlace = Place(context: context)
+        }
 
-            picker.dismiss(animated: true)
-        }
+        currentPlace?.image = image.jpegData(compressionQuality: 1.0)
+
+        // ✅ Add this — set the current date now
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        currentPlace?.date = formatter.string(from: now)
+
+        datelbl.text = formatDate(date: now)
+    }
+
+    picker.dismiss(animated: true)
+}
+    func formatDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+
+
 
            
-        func setDate(){
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .short
-            datelbl.text = formatter.string(from: Date())
-            dismiss(animated: true, completion: nil)
-        }
-        
+    func formatDate(from dateString: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z" // matches how it was saved, if stored as string
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateStyle = .medium
+        outputFormatter.timeStyle = .short
+        if let date = inputFormatter.date(from: dateString) {
+            return outputFormatter.string(from: date)
+        }
+        return dateString // fallback
+    }
+
         
         
         /*
