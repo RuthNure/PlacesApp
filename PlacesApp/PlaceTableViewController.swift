@@ -17,6 +17,7 @@ class PlaceTableViewController: UITableViewController {
         super.viewDidLoad()
         loadFromDatabase()
         print("✅ PlacesTableViewController loaded")
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
