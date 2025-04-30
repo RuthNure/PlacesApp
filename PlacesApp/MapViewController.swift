@@ -23,7 +23,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization( )
+
+        locationManager.startUpdatingLocation()
         mapView.delegate = self
+
     }
     
     @IBAction func sgmtMapType(_ sender: Any) {
