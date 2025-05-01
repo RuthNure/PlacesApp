@@ -26,6 +26,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         locationManager.startUpdatingLocation()
         mapView.delegate = self
+        
+        fetchSavedPlaces()          
+            addAllPlacePins()
 
     }
     
@@ -71,5 +74,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
     }
+    
+    func fetchSavedPlaces() {
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+        
+        do {
+            place = try context.fetch(fetchRequest)
+        } catch {
+            print(" Failed to fetch places: \(error)")
+        }
+    }
+    
+    func addAllPlacePins() {
+        for savedPlace in place {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: savedPlace.latitude,
+                                                           longitude: savedPlace.longitude)
+            annotation.title = savedPlace.name ?? "Unnamed Place"
+            mapView.addAnnotation(annotation)
+        }
+    }
+
+
 
 }
