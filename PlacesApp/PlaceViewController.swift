@@ -47,15 +47,17 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        if let thisPlace = currentPlace {
-            nameText.text = thisPlace.name
-            latitudelbl.text = String(thisPlace.latitude)
-            longitudelbl.text = String(thisPlace.longitude)
-            datelbl.text = thisPlace.date
-            if let imageDate = thisPlace.image {
-                imageView.image = UIImage(data: imageDate)
-            }
-        }
+      if let thisPlace = currentPlace {
+    nameText.text = thisPlace.name
+    latitudelbl.text = String(format: "%.4f", thisPlace.latitude)
+    longitudelbl.text = String(format: "%.4f", thisPlace.longitude)
+
+    datelbl.text = thisPlace.date
+    if let imageData = thisPlace.image {
+        imageView.image = UIImage(data: imageData)
+    }
+}
+
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -104,6 +106,9 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
     self.navigationController?.popViewController(animated: true)
     segment.selectedSegmentIndex = 0
     changeEditMode(self)
+    
+    print("Saving lat: \(currentPlace?.latitude ?? 0), long: \(currentPlace?.longitude ?? 0)")
+
 }
 
     @IBAction func changeEditMode(_ sender: Any) {
@@ -139,17 +144,22 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate, UIImageP
                 let lat = location.coordinate.latitude
                 let long = location.coordinate.longitude
                 
-                latitudelbl.text = String(format: "%g\u{00B0}", lat)
-                longitudelbl.text = String(format: "%g\u{00B0}", long)
+            latitudelbl.text = String(lat)
+    longitudelbl.text = String(long)
+
                 
                 
-                if currentLocation == nil {
-                    let context = appDelegate.persistentContainer.viewContext
-                    currentLocation = Place(context: context)
-                }
-                
-                currentLocation?.latitude = lat
-                currentLocation?.longitude = long
+             if currentPlace == nil {
+    let context = appDelegate.persistentContainer.viewContext
+    currentPlace = Place(context: context)
+}
+currentPlace?.latitude = lat
+currentPlace?.longitude = long
+
+
+//latitudelbl.text = String(format: "%g\u{00B0}", lat)
+//longitudelbl.text = String(format: "%g\u{00B0}", long)
+
             }
         }
         
